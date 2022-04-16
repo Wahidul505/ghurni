@@ -1,20 +1,20 @@
 [
     {
         "id": 1,
-        "name": "Sazek Valley",
-        "description": "Sajek Tripuri Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District.[3] The valley is 2,000 feet (610 m) above sea level.[4] Sajek Tripuri Valley is known as the Queen of Hills & Roof of Rangamati.",
-        "image": "https://i.postimg.cc/vDr50skJ/Sajek.png"
-    },
-    {
-        "id": 2,
         "name": "Sundarbans",
         "description": "Sundarbans is a mangrove area in the delta formed by the confluence of the Padma, Brahmaputra and Meghna Rivers in the Bay of Bengal. It spans the area from the Baleswar River in Bangladesh's division of Khulna to the Hooghly River in India's state of West Bengal.",
         "image": "https://i.postimg.cc/ZCJpgQhC/sundorbon.png"
     },
     {
+        "id": 2,
+        "name": "Sazek Valley",
+        "description": "Sajek Tripuri Valley is one of the most popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District.The valley is 2,000 feet above sea level.Sajek Tripuri Valley is known as the Queen of Hills & Roof of Rangamati.",
+        "image": "https://i.postimg.cc/vDr50skJ/Sajek.png"
+    },
+    {
         "id": 3,
         "name": "Sreemangal",
-        "description": "Sreemangal (Bengali: শ্রীমঙ্গল, romanized: Srimongol) is an upazila of Moulvibazar District[1] in the Sylhet Division of Bangladesh. It is located at the southwest of the district, and borders the Habiganj District to the west and the Indian state of Tripura to the south. Sreemangal is often referred to as the 'tea capital' of Bangladesh, and is most famous for its tea fields. Other than tea, the rubber, pineapple, wood, betel, and lemon industries also exist in the upazila.",
+        "description": "Sreemangal is an upazila of Moulvibazar District[1] in the Sylhet Division of Bangladesh. It is located at the southwest of the district, and borders the Habiganj District to the west and the Indian state of Tripura to the south. Sreemangal is often referred to as the 'tea capital' of Bangladesh..",
         "image": "https://i.postimg.cc/XBkFqf9j/Sreemongol.png"
     }
 ]

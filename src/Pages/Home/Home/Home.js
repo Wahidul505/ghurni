@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Detail from '../Detail/Detail';
 import Place from '../Place/Place';
-import './Home.css';
 
 const Home = () => {
     const [places, setPlaces] = useState([]);
-    const [selectedPlace, setSelectedPlace] = useState({})
+    const [placeDetail, setPlaceDetail] = useState({})
     useEffect(() => {
         fetch('data.json')
             .then(res => res.json())
@@ -13,15 +12,14 @@ const Home = () => {
     }, []);
     const handleSelectPlace = id => {
         const place = places.find(element => element.id === id);
-        setSelectedPlace(place);
+        setPlaceDetail(place);
     };
-    console.log(selectedPlace);
     return (
-        <div className='home grid grid-cols-1 md:grid-cols-2 py-40 px-10'>
+        <div className='home grid grid-cols-1 md:grid-cols-2'>
             <div>
-                <Detail />
+                <Detail placeDetail={placeDetail}/>
             </div>
-            <div className='flex gap-8'>
+            <div className='flex gap-4'>
                 {
                     places.map(place => <Place
                         key={place.id}
