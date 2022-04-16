@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
     const [userInfo, setUserInfo] = useState({
         name: "",
         email: "",
@@ -14,7 +18,7 @@ const Login = () => {
         emailError: "",
         passwordError: "",
         general: "",
-    })
+    });
     const [
         signInWithEmailAndPassword,
         user,
@@ -46,8 +50,10 @@ const Login = () => {
         }
         if (user) {
             setErrors({ emailError: "", passwordError: "", general: "" });
+            navigate(from, {replace:true});
         }
-    }, [loginError, errors, user]);
+    }, [loginError, errors, user, from, navigate]);
+
     return (
         <div className='w-2/3 md:w-1/3 mx-auto'>
             <h1 className='text-white text-3xl font-semibold mb-6'>Login</h1>
@@ -55,8 +61,9 @@ const Login = () => {
                 <input onChange={handleEmailChange} className='bg-white py-1 px-2 rounded focus:outline-none' type="email" name="email" id="email" placeholder='Email' />
                 <input onChange={handlePasswordChange} className='bg-white py-1 px-2 rounded focus:outline-none' type="password" name="password" id="password" placeholder='Password' />
                 {errors?.general && <p className='text-red-400'>{errors?.general}</p>}
-                <input className='bg-amber-500 text-white rounded py-1 px-2 cursor-pointer' type="submit" value="Login" />
+                <input className='bg-amber-500 text-white rounded py-1 px-2 cursor-pointer mb-2' type="submit" value="Login" />
             </form>
+            <Link to='/register' className='text-white underline'>Create an Account</Link>
             <div>
                 <SocialLogin />
             </div>

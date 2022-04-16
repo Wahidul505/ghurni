@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
     const [userInfo, setUserInfo] = useState({
         name: "",
         email: "",
@@ -18,7 +22,6 @@ const Register = () => {
     const [
         createUserWithEmailAndPassword,
         user,
-        loading,
         creatUserError,
     ] = useCreateUserWithEmailAndPassword(auth);
     const handleNameChange = e => {
@@ -68,10 +71,11 @@ const Register = () => {
                     setErrors({ ...errors, general: "Something went wrong" });
             }
         }
-        if(user){
-            setErrors({emailError: "", passwordError: "", general:""});
+        if (user) {
+            setErrors({ emailError: "", passwordError: "", general: "" });
+            navigate(from, { replace: true });
         }
-    }, [creatUserError, errors, user]);
+    }, [creatUserError, errors, user, from, navigate]);
     return (
         <div className='w-2/3 md:w-1/3 mx-auto -mt-8'>
             <h1 className='text-white text-3xl font-semibold mb-6'>Create an Account</h1>
@@ -83,8 +87,9 @@ const Register = () => {
                 {errors?.passwordError && <p className='text-red-400'>{errors?.passwordError}</p>}
                 <input onChange={handleConfirmPasswordChange} className='bg-white py-1 px-2 rounded focus:outline-none' type="password" name="confirm_password" id="confirm_password" placeholder='Confirm Password' />
                 {errors?.general && <p className='text-red-400'>{errors?.general}</p>}
-                <input className='bg-amber-500 text-white rounded py-1 px-2 cursor-pointer' type="submit" value="Create Account" />
+                <input className='bg-amber-500 text-white rounded py-1 px-2 cursor-pointer mb-2' type="submit" value="Create Account" />
             </form>
+            <Link to='/login' className='text-white underline'>Already have an Account</Link>
             <div>
                 <SocialLogin />
             </div>

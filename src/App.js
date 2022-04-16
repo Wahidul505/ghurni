@@ -4,6 +4,7 @@ import Booking from './Pages/Booking/Booking';
 import Login from './Pages/Forms/Login/Login';
 import Register from './Pages/Forms/Register/Register';
 import Home from './Pages/Home/Home/Home';
+import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import Header from './Pages/Shared/Header/Header';
 
 function App() {
@@ -14,7 +15,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/home' element={<Home />}></Route>
-          <Route path='/bookings' element={<Booking />}></Route>
+          <Route path='/booking' element={
+            <RequireAuth>
+              <Booking />
+            </RequireAuth>
+          }></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/register' element={<Register />}></Route>
         </Routes>
